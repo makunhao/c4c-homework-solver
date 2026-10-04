@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{xeCJK}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\setCJKmainfont{Microsoft YaHei}
+\setlist{nosep,leftmargin=1.6em}
+\pagestyle{plain}
+
+% ── 盒子：手写，只用核心命令 ──────────────────────────────────
+% 原本用的是 tcolorbox，但便携 MiKTeX 里缺它的依赖 trimspaces.sty，
+% 而自动装包在这台机器上没生效。与其去补依赖，不如不用它——
+% 手写盒子的好处是**只依赖 LaTeX 内核**，换任何一台装了 xelatex 的机器都能编。
+%
+% ⚠️ 这里刻意用 \newcommand 而不是 \newenvironment：
+% \newenvironment{...}[2]{begin}{end} 的**结束段不能引用参数**，
+% 写了 #1 会报 "Illegal parameter number in definition of \end...".
+% 普通命令没有这个限制。
+\newcommand{\hwboxout}[3]{%
+  \par\medskip\noindent
+  \setlength{\fboxsep}{7pt}%
+  \fcolorbox{#1}{#2}{\begin{minipage}{0.90\textwidth}#3\end{minipage}}%
+  \par\medskip}
+
+\title{\textbf{作业求解结果}}
+\author{由 homework-solver 自动生成（求解 $\to$ 自校验 $\to$ 排版）}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{-1.2em}
+\hwboxout{gray!70}{gray!8}{\textbf{本文件由流水线自动生成。}每题都经过\textbf{自校验}——
+解出的结果会代回原题复算一次；\textbf{自校验未通过的题会被红框标出}，
+不会安静地混在正确答案里。}
+\vspace{0.2em}
+
+\section*{总览}
+
+\begin{itemize}
+
+  \item 题目总数：\textbf{6}
+  \item 成功求解：\textbf{6}
+  \item 自校验通过：\textbf{6}
+  \item 自校验\textbf{未通过}：\textbf{0}
+\end{itemize}
+
+\section*{第 1 题\quad 三阶行列式}
+
+\textbf{题目.}\;计算行列式 $\det\begin{pmatrix}1&2&3\\4&5&6\\7&8&10\end{pmatrix}$。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 取矩阵 $A = \left(\begin{array}{ccc} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 10\end{array}\right)$
+  \item 按第一行做余子式展开，并另用消元法取主元之积——两条路径互为校验：
+  \item $\det A = -3$
+  \item （两条独立路径结果一致，见下方自校验）
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\det A = -3\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——余子式展开 = -3；消元主元积 = -3（两条独立路径）
+
+\vspace{0.6em}
+
+\section*{第 2 题\quad 奇异矩阵行列式（边界用例）}
+
+\textbf{题目.}\;计算行列式 $\det\begin{pmatrix}1&2&3\\2&4&6\\3&6&9\end{pmatrix}$。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 取矩阵 $A = \left(\begin{array}{ccc} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 6 & 9\end{array}\right)$
+  \item 按第一行做余子式展开，并另用消元法取主元之积——两条路径互为校验：
+  \item $\det A = 0$
+  \item （两条独立路径结果一致，见下方自校验）
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\det A = 0\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——余子式展开 = 0；消元主元积 = 0（两条独立路径）
+
+\vspace{0.6em}
+
+\section*{第 3 题\quad 行最简形与秩}
+
+\textbf{题目.}\;把 $A=\begin{pmatrix}1&2&3\\2&4&6\\1&1&1\end{pmatrix}$ 化为行最简形，并求其秩。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 取矩阵 $A = \left(\begin{array}{ccc} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 1 & 1 & 1\end{array}\right)$
+  \item 第 2 行减去第 1 行的 2 倍
+  \item 第 3 行减去第 1 行的 1 倍
+  \item 交换第 2 行与第 3 行
+  \item 第 2 行整体除以 -1，使主元为 1
+  \item 第 1 行减去第 2 行的 2 倍
+  \item 化为行最简形：
+  \item $\left(\begin{array}{ccc} 1 & 0 & -1 \\ 0 & 1 & 2 \\ 0 & 0 & 0\end{array}\right)$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\text{RREF} = \left(\begin{array}{ccc} 1 & 0 & -1 \\ 0 & 1 & 2 \\ 0 & 0 & 0\end{array}\right),\quad \mathrm{rank} = 2\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——rank(A) = 2；rank(A转置) = 2（转置后独立消元）
+
+\vspace{0.6em}
+
+\section*{第 4 题\quad 二阶矩阵特征值}
+
+\textbf{题目.}\;求 $A=\begin{pmatrix}4&1\\2&3\end{pmatrix}$ 的全部特征值。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 取矩阵 $A = \left(\begin{array}{cc} 4 & 1 \\ 2 & 3\end{array}\right)$
+  \item 写出特征多项式 $\det(A-\lambda I) = 0$：
+  \item $\lambda^{2} -7\lambda +10 = 0$
+  \item 解得特征值：
+  \item $\lambda \in \{2,\ 5\}$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\lambda \in \{2,\ 5\}\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——因式分解还原一致（特征多项式系数 1 -7 10）；特征值之和 = 7 vs tr(A) = 7
+
+\vspace{0.6em}
+
+\section*{第 5 题\quad 三阶矩阵特征值}
+
+\textbf{题目.}\;求 $A=\begin{pmatrix}1&2&0\\0&3&0\\2&-4&2\end{pmatrix}$ 的全部特征值。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 取矩阵 $A = \left(\begin{array}{ccc} 1 & 2 & 0 \\ 0 & 3 & 0 \\ 2 & -4 & 2\end{array}\right)$
+  \item 写出特征多项式 $\det(A-\lambda I) = 0$：
+  \item $\lambda^{3} -6\lambda^{2} +11\lambda -6 = 0$
+  \item 解得特征值：
+  \item $\lambda \in \{1,\ 2,\ 3\}$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\lambda \in \{1,\ 2,\ 3\}\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——因式分解还原一致（特征多项式系数 1 -6 11 -6）；特征值之和 = 6 vs tr(A) = 6
+
+\vspace{0.6em}
+
+\section*{第 6 题\quad 无理特征值（走数值分支，边界用例）}
+
+\textbf{题目.}\;求 $A=\begin{pmatrix}1&1\\1&0\end{pmatrix}$ 的全部特征值。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 取矩阵 $A = \left(\begin{array}{cc} 1 & 1 \\ 1 & 0\end{array}\right)$
+  \item 写出特征多项式 $\det(A-\lambda I) = 0$：
+  \item $\lambda^{2} -\lambda -1 = 0$
+  \item 解得特征值：
+  \item $\lambda \in \{1.61803,\ -0.618034\}$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\lambda \in \{1.61803,\ -0.618034\}\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——因式分解还原一致（特征多项式系数 1 -1 -1）；数值根代回残差最大 = 8.92e-06
+
+\vspace{0.6em}
+
+
+\end{document}
