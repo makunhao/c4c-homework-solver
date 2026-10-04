@@ -1,0 +1,76 @@
+{
+  "summary": {
+    "total": 2,
+    "solved": 2,
+    "verified": 0,
+    "verify_failed": 0,
+    "unsolved": 0
+  },
+  "compile": {
+    "pdf_bytes": 90101,
+    "warnings": 5,
+    "errors": [],
+    "ok": true,
+    "message": "homework.pdf（90101 字节，5 条警告）"
+  },
+  "problems": [
+    {
+      "id": "L1",
+      "type": "reasoning",
+      "title": "应用题（一元二次建模）",
+      "question": "一个长方形的长比宽多 3 厘米，它的面积是 40 平方厘米。求这个长方形的长和宽。",
+      "gold": "宽 5 厘米，长 8 厘米"
+    },
+    {
+      "id": "L2",
+      "type": "reasoning",
+      "title": "古典概型（文字题）",
+      "question": "从 1, 2, 3, 4, 5 这五个数字中任取两个不同的数，求这两个数的和为偶数的概率。",
+      "gold": "2/5"
+    }
+  ],
+  "results": [
+    {
+      "solved": {
+        "ok": true,
+        "steps": [
+          "$$设长方形的宽为x\\text{cm}$$",
+          "$$则其长为x+3\\text{cm}$$",
+          "$$根据面积公式，有：(x+3)x=40$$",
+          "$$即：x^2 + 3x - 40 = 0$$"
+        ],
+        "conclusion": "$$x_1 = 5, x_2 = -8$$",
+        "kind": "llm",
+        "model": "qwen2.5:3b"
+      },
+      "verify": {
+        "verified": null,
+        "note": "由模型求解，无自动校验；仅供人工复核"
+      }
+    },
+    {
+      "solved": {
+        "ok": true,
+        "steps": [
+          "$A$ 表示第一个数是奇数，$B$ 表示第二个数也是奇数。",
+          "$C$ 表示第一个数是偶数，$D$ 表示第二个数也是偶数。",
+          "$P(A) = P(B) = \\frac{3}{5}$，因为有 3 个奇数（1, 3, 5）和 2 个偶数（2, 4）。",
+          "$P(C) = P(D) = \\frac{2}{5}$，同理。",
+          "两个数的和为偶数的情况有两种：$A$ 和 $B$；$C$ 和 $D$。",
+          "因此，总概率是 $P(A \text{ and } B) + P(C \text{ and } D)$。",
+          "$P(A \text{ and } B) = P(A) \\times P(B) = \\frac{3}{5} \\times \\frac{2}{5}$；",
+          "$P(C \text{ and } D) = P(C) \\times P(D) = \\frac{2}{5} \\times \\frac{1}{5}$。",
+          "所以，总概率是 $\\frac{3}{5} \\times \\frac{2}{5} + \\frac{2}{5} \\times \\frac{1}{5}$。",
+          "总概率计算如下：$P = \\frac{6}{25} + \\frac{2}{25} = \\frac{8}{25}$。"
+        ],
+        "conclusion": "\\frac{8}{25}",
+        "kind": "llm",
+        "model": "qwen2.5:3b"
+      },
+      "verify": {
+        "verified": null,
+        "note": "由模型求解，无自动校验；仅供人工复核"
+      }
+    }
+  ]
+}
