@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{xeCJK}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\setCJKmainfont{Microsoft YaHei}
+\setlist{nosep,leftmargin=1.6em}
+\pagestyle{plain}
+
+% ── 盒子：手写，只用核心命令 ──────────────────────────────────
+% 原本用的是 tcolorbox，但便携 MiKTeX 里缺它的依赖 trimspaces.sty，
+% 而自动装包在这台机器上没生效。与其去补依赖，不如不用它——
+% 手写盒子的好处是**只依赖 LaTeX 内核**，换任何一台装了 xelatex 的机器都能编。
+%
+% ⚠️ 这里刻意用 \newcommand 而不是 \newenvironment：
+% \newenvironment{...}[2]{begin}{end} 的**结束段不能引用参数**，
+% 写了 #1 会报 "Illegal parameter number in definition of \end...".
+% 普通命令没有这个限制。
+\newcommand{\hwboxout}[3]{%
+  \par\medskip\noindent
+  \setlength{\fboxsep}{7pt}%
+  \fcolorbox{#1}{#2}{\begin{minipage}{0.90\textwidth}#3\end{minipage}}%
+  \par\medskip}
+
+\title{\textbf{作业求解结果}}
+\author{由 homework-solver 自动生成（求解 $\to$ 自校验 $\to$ 排版）}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{-1.2em}
+\hwboxout{gray!70}{gray!8}{\textbf{本文件由流水线自动生成。}每题都经过\textbf{自校验}——
+解出的结果会代回原题复算一次；\textbf{自校验未通过的题会被红框标出}，
+不会安静地混在正确答案里。}
+\vspace{0.2em}
+
+\section*{总览}
+
+\begin{itemize}
+
+  \item 题目总数：\textbf{6}
+  \item 成功求解：\textbf{5}
+  \item 自校验通过：\textbf{5}
+  \item 自校验\textbf{未通过}：\textbf{0}
+\end{itemize}
+
+\section*{第 1 题\quad 一元二次方程（两不等实根）}
+
+\textbf{题目.}\;解方程 $x^{2}-5x+6=0$。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 化为标准形式：$1x^2 -5x+6=0$
+  \item 计算判别式：$\Delta = b^2-4ac = (-5)^2-4\cdot(1)\cdot(6) = 1$
+  \item $\Delta>0$，有两个不相等实根，代入求根公式：
+  \item $x_{1,2}=\frac{-b\pm\sqrt{\Delta}}{2a}=\frac{5\pm\sqrt{1}}{2}$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(x_1 = 3,\quad x_2 = 2\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——f(3) = 0；f(2) = 0
+
+\vspace{0.6em}
+
+\section*{第 2 题\quad 一元二次方程（负首项系数）}
+
+\textbf{题目.}\;解方程 $2x^{2}+3x-2=0$。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 化为标准形式：$2x^2 +3x-2=0$
+  \item 计算判别式：$\Delta = b^2-4ac = (3)^2-4\cdot(2)\cdot(-2) = 25$
+  \item $\Delta>0$，有两个不相等实根，代入求根公式：
+  \item $x_{1,2}=\frac{-b\pm\sqrt{\Delta}}{2a}=\frac{-3\pm\sqrt{25}}{4}$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(x_1 = 0.5,\quad x_2 = -2\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——f(0.5) = 0；f(-2) = 0
+
+\vspace{0.6em}
+
+\section*{第 3 题\quad 二元一次方程组}
+
+\textbf{题目.}\;解方程组 $\begin{cases}3x+2y=12\\ x-y=1\end{cases}$。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 写出增广矩阵：$\left(\begin{array}{cc|c}3 & 2 & 12 \\ 1 & -1 & 1\end{array}\right)$
+  \item 回代得到唯一解：
+  \item $x_{1} = 2.8 \quad x_{2} = 1.8$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(x_{1} = 2.8,\quad x_{2} = 1.8\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——方程1：12 vs 12；方程2：1 vs 1
+
+\vspace{0.6em}
+
+\section*{第 4 题\quad 三元一次方程组}
+
+\textbf{题目.}\;解方程组 $\begin{cases}x+y+z=6\\ 2x-y+z=3\\ x+2y-z=2\end{cases}$。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 写出增广矩阵：$\left(\begin{array}{ccc|c}1 & 1 & 1 & 6 \\ 2 & -1 & 1 & 3 \\ 1 & 2 & -1 & 2\end{array}\right)$
+  \item 交换第 1 行与第 2 行（列主元）
+  \item 交换第 2 行与第 3 行（列主元）
+  \item 回代得到唯一解：
+  \item $x_{1} = 1 \quad x_{2} = 2 \quad x_{3} = 3$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(x_{1} = 1,\quad x_{2} = 2,\quad x_{3} = 3\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——方程1：6 vs 6；方程2：3 vs 3；方程3：2 vs 2
+
+\vspace{0.6em}
+
+\section*{第 5 题\quad 描述统计}
+
+\textbf{题目.}\;某小组 8 名同学的一次测验成绩为 $12,15,11,19,15,22,15,13$，求均值、中位数、样本标准差与极差。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 数据共 $n = 8$ 个：$12,\ 15,\ 11,\ 19,\ 15,\ 22,\ 15,\ 13$
+  \item 均值：$\bar x = \frac{1}{n}\sum x_i = \frac{122}{8} = 15.25$
+  \item 升序排列后取中位数：$11,\ 12,\ 13,\ 15,\ 15,\ 15,\ 19,\ 22$$\;\Rightarrow\; M_e = 15$
+  \item 样本方差：$s^2 = \frac{\sum (x_i-\bar x)^2}{n-1} = 13.3571$
+  \item 样本标准差：$s = \sqrt{s^2} = 3.65474$
+  \item 极差：$R = \max - \min = 22 - 11 = 11$
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(\bar x=15.25,\; M_e=15,\; s=3.65474,\; R=11\)}
+
+\textbf{自校验：}\textcolor{green!55!black}{通过}——另一路径重算：均值 15.25（原 15.25）；标准差 3.65474（原 3.65474）
+
+\vspace{0.6em}
+
+\section*{第 6 题\quad （不支持的题型：走错误路径）}
+
+\textbf{题目.}\;请写一篇 500 字的英语作文，题目自拟。
+
+
+\hwboxout{red!75}{red!6}{\textbf{求解未完成：}题型 'essay' 没有内置确定性求解器；加 --llm（并给 --base-url/--model）可交模型求解}
+
+
+\end{document}
