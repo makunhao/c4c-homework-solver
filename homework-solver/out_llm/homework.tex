@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{xeCJK}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\setCJKmainfont{Microsoft YaHei}
+\setlist{nosep,leftmargin=1.6em}
+\pagestyle{plain}
+
+% ── 盒子：手写，只用核心命令 ──────────────────────────────────
+% 原本用的是 tcolorbox，但便携 MiKTeX 里缺它的依赖 trimspaces.sty，
+% 而自动装包在这台机器上没生效。与其去补依赖，不如不用它——
+% 手写盒子的好处是**只依赖 LaTeX 内核**，换任何一台装了 xelatex 的机器都能编。
+%
+% ⚠️ 这里刻意用 \newcommand 而不是 \newenvironment：
+% \newenvironment{...}[2]{begin}{end} 的**结束段不能引用参数**，
+% 写了 #1 会报 "Illegal parameter number in definition of \end...".
+% 普通命令没有这个限制。
+\newcommand{\hwboxout}[3]{%
+  \par\medskip\noindent
+  \setlength{\fboxsep}{7pt}%
+  \fcolorbox{#1}{#2}{\begin{minipage}{0.90\textwidth}#3\end{minipage}}%
+  \par\medskip}
+
+\title{\textbf{作业求解结果}}
+\author{由 homework-solver 自动生成（求解 $\to$ 自校验 $\to$ 排版）}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{-1.2em}
+\hwboxout{gray!70}{gray!8}{\textbf{本文件由流水线自动生成。}每题都经过\textbf{自校验}——
+解出的结果会代回原题复算一次；\textbf{自校验未通过的题会被红框标出}，
+不会安静地混在正确答案里。}
+\vspace{0.2em}
+
+\section*{总览}
+
+\begin{itemize}
+
+  \item 题目总数：\textbf{2}
+  \item 成功求解：\textbf{2}
+  \item 自校验通过：\textbf{0}
+  \item 自校验\textbf{未通过}：\textbf{0}
+\end{itemize}
+
+\section*{第 1 题\quad 应用题（一元二次建模）}
+
+\textbf{题目.}\;一个长方形的长比宽多 3 厘米，它的面积是 40 平方厘米。求这个长方形的长和宽。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item $	ext{设}$ $a$ 为长方形的宽，$b$ 为长方形的长。
+  \item $	ext{则有}$ $a + b = 40$ 平方厘米。
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(通过解这个方程，我们可以找到长方形的宽和长。\)}
+
+\textbf{自校验：}不适用——由模型求解，**无自动校验**；仅供人工复核
+
+\vspace{0.6em}
+
+\section*{第 2 题\quad 古典概型（文字题）}
+
+\textbf{题目.}\;从 1, 2, 3, 4, 5 这五个数字中任取两个不同的数，求这两个数的和为偶数的概率。
+
+
+\textbf{求解过程.}
+
+\begin{enumerate}[label=\arabic*.]
+
+  \item 第一步：计算从 1, 2, 3, 4, 5 中任取两个不同的数的情况数。
+  \item 第二步：计算这些情况数中，两个数的和为偶数的情况数。
+  \item 第三步：根据概率公式计算这两个数的和为偶数的概率。
+\end{enumerate}
+
+\hwboxout{gray!70}{gray!8}{\textbf{答案：}\(从 1, 2, 3, 4, 5 这五个数字中任取两个不同的数，求这两个数的和为偶数的概率是 $rac{6}{10} = rac{3}{5}$。\)}
+
+\textbf{自校验：}不适用——由模型求解，**无自动校验**；仅供人工复核
+
+\vspace{0.6em}
+
+
+\end{document}
